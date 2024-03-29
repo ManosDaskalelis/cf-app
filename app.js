@@ -21,13 +21,15 @@ app.use(cors({
   origin: '*'
   // origin: ['http://localhost:8000/', 'http://www.aueb.gr']
 }))
-
 const user = require('./routes/user.route');
-const userProduct = require('./routes/user.products.routes')
+const userProduct = require('./routes/user.products.routes');
+const product = require('./routes/products.routes')
+const { findAll } = require('./controllers/user.controller');
 
 app.use('/', express.static('files'));
 app.use('/api/users', user)
 app.use('/api/user-products', userProduct)
+app.use('/api/products', product)
 
 app.use('/api-docs', 
   swaggerUi.serve,
